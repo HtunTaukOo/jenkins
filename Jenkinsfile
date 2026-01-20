@@ -1,38 +1,24 @@
 pipeline {
     agent any
 
-    triggers {
-        githubPush()
-    }
-
     stages {
-        stage('Checkout') {
-            steps {
-                git branch: 'main',
-                    url: 'https://github.com/HtunTaukOo/jenkins.git'
-            }
-        }
-
         stage('Build') {
             steps {
-                echo 'Building...'
-                sh 'npm install'
-                sh 'npm run build'
+                echo 'Build stage running'
             }
         }
 
         stage('Test') {
             steps {
-                echo 'Testing...'
-                sh 'npm test'
+                echo 'Test stage running'
             }
         }
 
         stage('Deploy') {
             steps {
-                echo 'Deploying locally...'
-                sh './deploy.sh'
+                echo 'Deploy stage running'
             }
         }
     }
 }
+
